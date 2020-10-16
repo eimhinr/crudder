@@ -1,0 +1,170 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "JSON schema for CRUD sql from Snowflake to Airtbale/Sheets",
+    "type": "object",
+    "required": [
+        "type",
+        "id",
+        "tasks"
+    ],
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": [
+                "airtable",
+                "sheets"
+            ]
+        },
+        "id": {
+            "type": "string",
+            "enum": [
+                "base_id",
+                "sh_key"
+            ]
+        },
+        "prefix": {
+            "type": "string"
+        },
+        "format": {
+            "type": "string",
+            "enum": [
+                "lower",
+                "upper",
+                "camel",
+                "title"
+            ]
+        },
+        "abbreviations": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "tasks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "id",
+                    "source",
+                    "target",
+                    "primary_keys"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "overwrite",
+                            "update",
+                            "partial",
+                            "append"
+                        ]
+                    },
+                    "id": {
+                        "type": "string",
+                        "enum": [
+                            "base_id",
+                            "sh_key"
+                        ]
+                    },
+                    "source": {
+                        "type": "object",
+                        "required": [
+                            "filename",
+                            "filetype"
+                        ],
+                        "properties": {
+                            "filename": {
+                                "type": "string"
+                            },
+                            "filetype": {
+                                "type": "string",
+                                "enum": [
+                                    "sql",
+                                    "csv"
+                                ]
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "target": {
+                        "type": "object",
+                        "required": [
+                            "table",
+                            "wks_index"
+                        ],
+                        "properties": {
+                            "table": {
+                                "type": "string"
+                            },
+                            "wks_index": {
+                                "type": "number"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "primary_keys": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "table",
+                                "primary_key",
+                                "fields"
+                            ],
+                            "properties": {
+                                "table": {
+                                    "type": "string"
+                                },
+                                "primary_key": {
+                                    "type": "string"
+                                },
+                                "fields": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "arrays": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "overrides": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "override_field",
+                                "ref_field"
+                            ],
+                            "properties": {
+                                "override_field": {
+                                    "type": "string"
+                                },
+                                "ref_field": {
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": false
+}
