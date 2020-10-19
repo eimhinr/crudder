@@ -21,3 +21,5 @@ coverage.xml
 test.py
 tests/
 archive/
+
+.python-version

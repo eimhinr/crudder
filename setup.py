@@ -8,9 +8,9 @@ setup(
     author_email="lfparis@gmail.com",
     url="https://github.com/lfparis/crudder",
     version="0.0.1b5",
-    install_requires=["aiohttp", "pandas"],
+    install_requires=["airtable-async", "gspread"],
     python_requires="!=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*",  # noqa: E501
-    keywords=["airtable", "api", "async", "async.io"],
+    keywords=["airtable", "gsheets", "api", "async", "async.io"],
     license="The MIT License (MIT)",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

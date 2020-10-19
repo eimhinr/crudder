@@ -2,7 +2,8 @@ pytest
 pytest-cov
 pytest-asyncio
 coveralls
-aiohttp
+airtable-async
+gspread
 flake8
 tox-travis
 
